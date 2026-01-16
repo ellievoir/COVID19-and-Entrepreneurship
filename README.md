@@ -30,7 +30,7 @@ I strongly believe that the COVID19 pandemic kickstarted a cultural shift to mak
 
 ## Data Manipulations
 
-For each Data Visualization, it was filtered to show only non-corporation business applications. States with unclear or no stay-at-home mandates were also filtered out. Given that the Business Formation Statistics dataset doesn't record on a daily basis and stay-at-home mandates often start in the middle of the week, there's a small gap in data on the exact number of businesses formed at the beginning of the stay at home mandate and end of the week that the stay at home mandate begun. A daily average of business application was calculated so an approximate number of businesses formed could be found to fill this gap. Also given that the 
+For each Data Visualization, it was filtered to show only non-corporation business applications. States with unclear or no stay-at-home mandates were also filtered out. Given that the Business Formation Statistics dataset doesn't record on a daily basis and stay-at-home mandates often start in the middle of the week, there's a small gap in data on the exact number of businesses formed at the beginning of the stay at home mandate and end of the week that the stay at home mandate begun. A daily average of business application was calculated so an approximate number of businesses formed could be found to fill this gap.
 
 ### Calculated Fields
 
@@ -69,14 +69,15 @@ Given that states with higher population values will show a higher daily average
 
 ***COVID19 Change in Daily Average of Non-Corporate Business Applications Per Capita (Mandate States)***
 
-{ FIXED [State] : 
+``` { FIXED [State] : 
   AVG(IF [During Stay-at-Home Mandate] = TRUE 
       THEN [Daily Average of Non-Corporate Business Applications Per Capita] END) 
 }
 -
 { FIXED [State] : 
   AVG([Daily Average of Non-Corporate Business Applications Per Capita])
-}
+} 
+```
 
 ***Mandatory Stay at Home Order Lengths***
 
@@ -125,4 +126,5 @@ Here are known potential causes of issues within the datasets
 - The Business Formations are recorded by State and Week, not day or county. 
 - The COVID19 Stay-at-Home Mandates dataset doesn't include information on expiration dates for stay-at-home mandates that were announced after May 5th. So the information we have on states or counties with very long stay-at-home mandates is sparse. 
 - The IRS may have experienced delays in processing EIN applications during the COVID19 pandemic. 
+
 - 
